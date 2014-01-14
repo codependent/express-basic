@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+
+
+	#loginForm
+		form(method="post",action="/login")
+			div
+				|usuario: 
+				input(type="text",name="username")
+			div
+				|password: 
+				input(type="password",name="password")
+			
+			div.error= error
+			
+			div
+				input(type="submit",name="login",value="login")

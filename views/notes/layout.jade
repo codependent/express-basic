@@ -1,0 +1,19 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+		link(rel='stylesheet', href='/stylesheets/custom.css')
+
+		script(type="text/javascript",src="/js/jquery-2.0.3.min.js",charset="UTF-8")
+		script(type="text/javascript",src="/js/bootstrap.min.js",charset="UTF-8")
+	body
+		div.container
+
+			a(href="/private") Private Home 
+			|| 
+			a(href="/private/notes") All Notes 
+			|| 
+			a(href="/private/notes/add") Add
+			block content

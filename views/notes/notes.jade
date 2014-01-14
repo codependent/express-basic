@@ -1,0 +1,35 @@
+extends layout
+
+block content
+
+	h1= title
+
+	if mensaje
+		p= mensaje
+
+	each val in notes
+		div.jumbotron
+			p #{val.ts} by #{val.author}
+			p #{val.note}
+			div#acciones
+				input(class="btn btn-primary" type="button",value="Comment")
+				form(method="GET",action="/private/notes/edit")
+					
+					input(class="btn btn-warning" type="submit",value="Edit")
+					input(type="hidden",name="id",value="#{val._id}")
+
+				form(method="POST",action="/private/notes/#{val.id}")
+					input(class="btn btn-danger" type="submit",value="Delete")
+					input(type="hidden", name="_method", value="DELETE")
+
+<!-- NEW COMMENT -->
+div(class="modal fade", id="newCommentPopup", tabindex="-1", role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				button(type="button",class="close",data-dismiss="modal",aria-hidden="true")$times;
+				h3 Nuevo Comentario
+			div.modal-body
+				textarea(autofocus, id="contentReplytextNew",style="width:100%")
+			div.modal-footer
+				a(href="#",data-dismiss="modal",class="btn btn-primary",onclick="javascript:enviarNewComment()") Aceptar

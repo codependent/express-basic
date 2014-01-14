@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+	h1= title
+
+	form(method="POST",action="#{postpath}")
+		if note
+			input(type="hidden",name="id",value="#{note.ts}")
+		|Autor: 
+		input(type="text",name="author",value="#{note.author}")				
+		br
+		|Nota: 
+		textarea(rows=5,cols=40,name="note") #{note.note}
+		br
+		input(type="submit",value="Submit")

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1= title
+	p #{user}, welcome to #{title}
+
+	div
+		a(href='/private/notes') View notes
+	div
+		a(href='/logout') Logout

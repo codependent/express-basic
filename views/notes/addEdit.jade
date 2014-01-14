@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+	h1= title
+
+	form(method="POST",action="/private/notes")
+		if note._id
+			input(type="hidden",name="id",value="#{note._id}")
+			input(type="hidden",name="_method",value="PUT")
+		else
+			input(type="hidden",name="_method",value="POST")
+		|Autor: 
+		input(type="text",name="author",value="#{note.author}")				
+		br
+		|Nota: 
+		textarea(rows=5,cols=40,name="note") #{note.note}
+		br
+		input(type="submit",value="Submit")
