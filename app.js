@@ -12,7 +12,7 @@ var path = require('path');
 var flash = require('connect-flash');
 var passport = require('passport')
 var dbEngine = 'mongoose';
-var dataCfg = require('./data/'+dbEngine+"-cfg");
+var dataCfg = require('./model/'+dbEngine+"-cfg");
 
 var app = express();
 
@@ -43,12 +43,12 @@ app.post('/login', passport.authenticate('local',
 		failureFlash: true }))
 app.get('/logout', logout.dologout);                                                    
 app.get('/private', priv.index);
-app.get('/private/notes', notes.index(dataCfg));
-app.get('/private/notes/add', notes.addForm(dataCfg));
-app.post('/private/notes', notes.add(dataCfg));
-app.get('/private/notes/edit', notes.editForm(dataCfg));
-app.put('/private/notes', notes.edit(dataCfg));
-app.delete('/private/notes/:id', notes.delete(dataCfg));
+app.get('/private/notes', notes.index());
+app.get('/private/notes/add', notes.addForm);
+app.post('/private/notes', notes.add);
+app.get('/private/notes/edit', notes.editForm);
+app.put('/private/notes', notes.edit);
+app.delete('/private/notes/:id', notes.delete);
 
 //REST Services
 app.get('/private/services/notes', notes.index(dataCfg,true));
